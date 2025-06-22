@@ -1,18 +1,47 @@
 <?php
+    // Старый код без ООП
+
     // URL для JSON
-    $url = "https://api.hh.ru/vacancies?employer_id=1740";
+    // $url = "https://api.hh.ru/vacancies?employer_id=1740";
 
-    // Инициализация cURL
-    $curl = curl_init($url);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($curl, CURLOPT_USERAGENT, 'HH-Parser/1.0');
+    // // Инициализация cURL
+    // $curl = curl_init($url);
+    // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    // curl_setopt($curl, CURLOPT_USERAGENT, 'HH-Parser/1.0');
 
-    // Получаем данные
-    $response = curl_exec($curl);
-    curl_close($curl);
+    // // Получаем данные
+    // $response = curl_exec($curl);
+    // curl_close($curl);
 
-    // Декодируем JSON
-    $data = json_decode($response, true);
+    // // Декодируем JSON
+    // $data = json_decode($response, true);
+
+
+    //Код с ООП
+    // Создаём класс
+    class Vacancy{
+        // Свойство класса
+        private $employeId;
+        // Конструктор класса
+        public function __construct($employeId = 1740)
+        {
+            $this->employeId = $employeId;
+        }
+        //Метод класса
+        public function getVacancy(){
+            //URL для JSON
+            $url = "https://api.hh.ru/vacancies?employer_id=" . $this->employeId;
+            // Инициализация cURL
+            $curl = curl_init($url);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_USERAGENT, 'HH-Parser/1.0');
+            // Получаем данные
+            $response = curl_exec($curl);
+            curl_close($curl);
+            // Декодируем JSON
+            return json_decode($response, true);
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,10 +59,14 @@
     <section class="hero">
         <h1>Яндекс вакансии</h1>
         <?php
+            //Создаём объект класса
+            $fetcher = new Vacancy();
+            //Переводим объект класса в массив
+            $vacancies = $fetcher->getVacancy();
             // Вывод списка йоу
             echo '<ul class = "vacancy-list">';
 
-            foreach ($data['items'] as $vacancy) {
+            foreach ($vacancies['items'] as $vacancy) {
                 // Форматируем зарплату
                 $salary = 'Не указана';
                 if ($vacancy['salary']) {
