@@ -8,7 +8,7 @@
 body{
     background-color: rgb(202, 215, 225);
 }
-/* 1 секция*/
+/* 1 страница*/
 .hero{
     max-width: 1100px;
     width: 100%;
@@ -23,7 +23,7 @@ body{
     list-style-type: none;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
 }
 .vacancy-list li{
     padding: 20px;
@@ -32,7 +32,7 @@ body{
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
     transition: all 0.4s ease;
 }
 .vacancy-list li:hover{
@@ -46,22 +46,25 @@ body{
     text-decoration: none;
     color: rgb(119, 0, 123);
 }
+.links-main{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+.links-main a{
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 15px;
+    background-color: #740b86c5;
+    color: #fff;
+    font-size: 14px;
+}
 /*Мобильная адаптация*/
 @media(max-width:500px){
     .hero{
-        width: 80%;
+        width: 90%;
     }
-    .hero h1{
-        font-size: 20px;
-    }
-    .vacancy-list h2{
-        font-size: 16px;
-    }
-    .vacancy-list strong, .vacancy-list p{
-        font-size: 14px;
-    }
-}
-@media(max-width:400px){
     .hero h1{
         font-size: 18px;
     }
@@ -70,5 +73,122 @@ body{
     }
     .vacancy-list strong, .vacancy-list p{
         font-size: 12px;
+    }
+    .links-main{
+        gap: 10px;
+    }
+    .links-main a{
+        font-size: 8px;
+        padding: 10px;
+    }
+}
+@media(max-width:400px){
+    .hero h1{
+        font-size: 16px;
+    }
+    .vacancy-list h2{
+        font-size: 12px;
+    }
+    .vacancy-list strong, .vacancy-list p{
+        font-size: 10px;
+    }
+    .links-main a{
+        padding: 8px;
+    }
+}
+
+/*2 страница*/
+.hero-details{
+    max-width: 1100px;
+    width: 100%;
+    margin: 60px auto;
+    background-color: #ffffffe7;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px 5px rgba(96, 96, 96, 0.364);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.hero-details h2{
+    font-size: 18px;
+}
+.hero-details p{
+    font-size: 18px;
+    line-height: 150%;
+}
+.description, .key_skills{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.description ul li, .key_skills ul li{
+    padding: 10px;
+    list-style: none;
+    font-size: 18px;
+}
+.key_skills strong{
+    font-size: 18px;
+}
+.links{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+.links a{
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #740b86c5;
+    color: #fff;
+    font-size: 18px;
+}
+/*Мобиьльная адаптация*/
+@media (max-width: 500px) {
+    .hero-details{
+        width: 90%;
+    }
+    .hero-details h1{
+        font-size: 18px;
+    }
+    .hero-details h2{
+        font-size: 16px;
+    }
+    .hero-details p{
+        font-size: 14px;
+    }
+    .description ul li, .key_skills ul li{
+        font-size: 14px;
+    }
+    .key_skills strong{
+        font-size: 14px;
+    }
+    .links{
+        gap: 10px;
+    }
+    .links a{
+        font-size: 12px;
+        padding: 10px;
+    }
+}
+@media(max-width: 400px){
+    .hero-details h1{
+        font-size: 16px;
+    }
+    .hero-details h2{
+        font-size: 14px;
+    }
+    .hero-details p{
+        font-size: 12px;
+    }
+    .description ul li, .key_skills ul li{
+        font-size: 12px;
+    }
+    .key_skills strong{
+        font-size: 12px;
+    }
+    .links a{
+        font-size: 10px;
+        padding: 10px;
     }
 }
